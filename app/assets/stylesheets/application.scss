@@ -1,0 +1,233 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require foundation_and_overrides
+ *= require foundation 
+ *= require chosen
+ *= require token-input-facebook
+ *= require jquery.ui.datepicker
+ *= require_tree .
+
+*/
+
+@import 'foundation-icons';
+
+.brand {
+  float: left;
+  text-align: left;
+  padding-right: 8px;
+}
+ul.nav {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+ul.nav li {
+  display: inline;
+}
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+#navbg{
+  background-color: #FC5D5D;
+  width: 100%;
+  top: 0px;
+  position: absolute;
+  height: 45px;
+}
+
+body {
+  //background-image: url(image_path('gray_sand.png')) !important;
+  background-color: #DDDDDD !important;
+}
+
+footer{
+  p, a{
+    color: #8C8B8B;
+  }
+}
+
+.top-var{
+  p,a{
+    color: #8C8B8B;
+  }
+}
+
+.panel{
+  background-color: #f2f2f2 !important;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+.no-padding-left{
+  padding-left: 0 !important;
+}
+
+
+//###### Nevigator Bar ######## 
+#home-paginate{
+  text-align: center;
+  ul > li { 
+    float: none; 
+    display: inline-block; 
+  }
+}
+
+
+.row#bar-top1 #bar-left-right{
+  width: 100%;
+  display: block;
+  background-color: black;
+  position: absolute;
+  height: 33px;
+  // left: -5000px;
+  z-index: -1;
+}
+.row#bar-top1 #bar-left-right:before, 
+.row#bar-top1 #bar-left-right:after {
+  content: "";
+  background: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  // width: 100%;
+}
+// .row#bar-top1 #bar-left-right:after {
+  // right: 100%;
+  // // display: none;
+// }
+.row#bar-top1 #bar-left-right:before {
+  width: 100%;
+  right: 100%;
+}
+  .row#bar-top1 div ul.right{
+    width: auto;
+    height: auto !important;
+    display: inline;
+    background: #333333;
+    font-size: 16px;
+    margin: 0;
+    list-style: none;
+  }
+  .row#bar-top1 div ul.right li{
+    float: left;
+  }
+  .row#bar-top1 div ul.right li a{
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 33px;
+    background: #111111;
+    color: white;
+    font-size: 0.7125em;
+    font-weight: bold;
+  }
+.row#bar-top2 #bar-left-right{
+  width: 100%;
+  display: block;
+  background-color: black;
+  opacity:0.7;
+  filter:alpha(opacity=70); /* For IE8 and earlier */
+  position: absolute;
+  height: 55px;
+  // left: -5000px;
+  z-index: -1;
+}
+.row#bar-top2 #bar-left-right:before, 
+.row#bar-top2 #bar-left-right:after {
+  content: "";
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 9999px;
+}
+.row#bar-top2 #bar-left-right:after {
+  right: 100%;
+}
+.row#bar-top2 #bar-left-right:before {
+  right: 100%;
+}
+
+  div.row#bar-top2 nav.top-bar ul.title-area li.name h1{
+    font-size:30px;
+    line-height: 55px;
+  }
+/*  #bar-top2 .top-bar-section > ul > .divider {
+    height: 55px;
+  }*/
+  
+  #bar-top2 .top-bar .name{
+    line-height:55px;
+  }
+  
+@media screen and (max-width: 949px){
+  #bar-top2 nav.top-bar section.top-bar-section ul.right li:not(.divider) a{
+    line-height: 15px;
+  }
+  div.row#bar-top2 nav.top-bar{
+    overflow: hidden;
+    height: 55px;
+    line-height: 55px;
+    position: relative;
+    background: none;
+  }
+  div.row#bar-top2 nav.top-bar.expanded {
+    height: auto;
+    background: transparent;
+  }
+  #bar-top2 .top-bar .name{
+    height:55px;
+  }
+}
+@media screen and (min-width: 950px){
+  #bar-top2 nav.top-bar section.top-bar-section ul.right li:not(.divider) a{
+    line-height: 55px;
+  }
+  #bar-top2 nav.top-bar section.top-bar-section ul.right li.divider{
+    height: 55px;
+  }
+  #bar-top2 nav.top-bar section.top-bar-section ul.right .divider{
+    border-right: solid 1px #2b2b2b;
+    border-left: solid 1px black;
+    opacity:0.0;
+    filter:alpha(opacity=0); /* For IE8 and earlier */
+  }
+  #bar-top2 .top-bar{
+    background: none;
+    overflow: visible;
+  }
+  #bar-top2 .top-bar .top-bar-section ul.right{
+    background: none;
+  }
+  #bar-top2 .top-bar .top-bar-section ul li a:not(.button){
+    line-height:55px;
+    background: none
+  }
+  #bar-top2 .top-bar .top-bar-section ul li a:not(.button):hover{
+    line-height:55px;
+    background: black
+  }
+  #bar-top2 .top-bar.expanded .title-area{
+    background: none;
+  }
+}

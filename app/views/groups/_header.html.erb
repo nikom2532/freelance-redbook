@@ -1,0 +1,45 @@
+
+
+<div class="header panel radius">
+	<ul class="breadcrumbs ">
+		<% if @group.parentgroups != nil %>
+			<% parent = @group.parentgroups %>
+			<li>
+				<%= link_to parent.name , :controller => "groups", :action => "about", :group_id => parent.id %>
+			</li>
+		<% end %>
+			<li class="current">
+				<%= @group.name %>
+			</li>
+<!-- 			<% if @group.subgroups.size > 0 %>
+			<% subs = @group.subgroups %>
+			<% subs.each do |sub| %>
+				<li>
+					<%= link_to sub.name , :controller => "groups", :action => "about", :group_id => sub.id %>
+				</li>
+			<% end %>
+		<% end %> -->
+	</ul>
+
+	<div class="row">
+		<div class="small-2 columns">
+			<%= image_tag @group.logo %>
+		</div>
+		<div class="small-10 columns">
+			<div class="row">
+				<%= @group.name %>&nbsp<%= @group.kind %>
+			</div>
+			<div class="row">
+				<%= @group.users.size %>&nbspmembers
+			</div>
+			<div class="row">
+				<%= @group.rdomain_list %>
+			</div>
+			
+		</div>
+	</div>
+<%= link_to "About", {:controller => "groups", :action => "about", :group_id => params[:group_id]}, :class => "small button" %>
+<%= link_to "Member", {:controller => "groups", :action => "member", :group_id => params[:group_id] }, :class => "small button" %>
+<%= link_to "Activity", {:controller => "groups", :action => "activity", :group_id => params[:group_id]} , :class => "small button" %>
+</div>
+

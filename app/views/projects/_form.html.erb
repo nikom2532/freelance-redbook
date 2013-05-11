@@ -1,0 +1,120 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= image_tag @project.image %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.file_field :image %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :name %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :name, required: true %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :scope %>
+    </div>
+    <div class="small-9 columns">
+      <%= select_tag(:scope, "<option>Undergrad</option><option>postgrad</option><option>phd</option>".html_safe)%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :research_domain %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :rdomain_list, :input_html => {  }  %>
+      <!-- :data => { :rdomains => Rdomain.get_rdomain_list.to_json }  -->
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :deadline %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :deadline, :placeholder => "Select date", :id => "deadline_picker", :autocomplete => "off"%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :budget %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.number_field :budget, required: true %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :description %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_area :description, style: "height: 200px;" , :accept => 'text/html', required: true %>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :city %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :city%>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :country %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :country %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :region %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :region%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :continent %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :continent %>
+    </div> 
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<!-- :name, :kind, :research_domain, :deadline, :budget, :description, :country, :region, :continent -->

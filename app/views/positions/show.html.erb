@@ -1,0 +1,8 @@
+
+
+<%= @position.university.name if @position.has_university? %>
+<%= @position.institute.name if @position.has_institute? %>
+<%= debug @position %>
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>

@@ -1,0 +1,58 @@
+
+<% if params[:list] == "" or params[:list] == "project" %>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt><!-- Filter: --></dt>
+            <dd class="active"><a href="#">Project</a></dd>
+            <dd><a href="?list=university">University</a></dd>
+            <dd><a href="?list=institute">Institute</a></dd>
+            <dd><a href="?list=researcher">Researcher</a></dd>
+        </dl>
+    </div>
+    <%= render partial: "project", projects: @projects %>
+<% elsif params[:list] == "institute" %>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt><!-- Filter: --></dt>
+            <dd><a href="?list=project">Project</a></dd>
+            <dd><a href="?list=university">University</a></dd>
+            <dd class="active"><a href="">Institute</a></dd>
+            <dd><a href="?list=researcher">Researcher</a></dd>
+        </dl>
+    </div>
+    <%= render partial: "institute", institutes: @institutes %>
+<% elsif params[:list] == "researcher" %>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt><!-- Filter: --></dt>
+            <dd><a href="?list=project">Project</a></dd>
+            <dd><a href="?list=university">University</a></dd>
+            <dd><a href="?list=institute">Institute</a></dd>
+            <dd class="active"><a href="#">Researcher</a></dd>
+        </dl>
+    </div>
+    <%= render partial: "researcher", users: @users %>
+<% elsif params[:list] == "university" %>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt><!-- Filter: --></dt>
+            <dd><a href="?list=project">Project</a></dd>
+            <dd class="active"><a href="#">University</a></dd>
+            <dd><a href="?list=institute">Institute</a></dd>
+            <dd><a href="?list=researcher">Researcher</a></dd>
+        </dl>
+    </div>
+    <%= render partial: "university", universities: @universities %>
+
+<% else %>
+    <div class="row">
+        <dl class="sub-nav">
+            <dt><!-- Filter: --></dt>
+            <dd class="active"><a href="#">Project</a></dd>
+            <dd><a href="?list=university">University</a></dd>
+            <dd><a href="?list=institute">Institute</a></dd>
+            <dd><a href="?list=researcher">Researcher</a></dd>
+        </dl>
+    </div>
+    <%= render partial: "project", projects: @projects %>
+<% end %>

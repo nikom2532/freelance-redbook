@@ -1,0 +1,49 @@
+<%= form_for(@position) do |f| %>
+  <% if @position.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@position.errors.count, "error") %> prohibited this position from being saved:</h2>
+
+      <ul>
+      <% @position.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :university %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :university_token, data: {load: @position.university} %>
+
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :institute %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :institute_token, data: {load: @position.institute} %>
+
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :title %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :title, required: true %>
+    </div> 
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

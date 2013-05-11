@@ -1,0 +1,21 @@
+<p>
+	<h5>Group's Moderator</h5>
+	<table>
+		<thead>
+			<th>name</th>
+			<th>email</th>
+			<th>promote</th>
+		</thead>
+		<tbody>
+			<% if @group.moderator != nil %>
+				<% @group.moderator.each do |user| %>
+					<tr>
+						<td><%= user.displayname %></td>
+						<td><%= user.email %></td>
+						<td><%= link_to "toUser",:controller => "groups", :action => "mod2user", :id => @group.id , :user_id => user.id %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</p>

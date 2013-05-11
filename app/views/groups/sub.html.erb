@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <h3>Add Subgroups</h3>
+  <b>Name:</b><%= @this_group.name %>
+</p>
+
+<b>All Group List</b>
+<table>
+	<tr>
+	    <th>Name</th>
+	    <th>Kind</th>
+	</tr>
+	<% if @groups.size > 0 %>
+		<% @groups.each do |all_group| %>
+	  	<tr>
+	    	<td><%= all_group.name %></td>
+	    	<td><%= all_group.kind %></td>
+			<td><%= link_to "Add Subgroups", :controller => "groups", :action => "addsub", :id => @this_group.id , :sid => all_group.id %></td>
+	  	</tr>
+		<% end %>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+	  	</tr>
+	<% end %>
+</table>
+
+<b>Sub Group List</b>
+<table>
+	<tr>
+	    <th>Name</th>
+	    <th>Kind</th>
+	</tr>
+	<% if @this_group.subgroups.size > 0 %>
+		<% @this_group.subgroups.each do |this_sub| %>
+	  	<tr>
+	    	<td><%= this_sub.name %></td>
+	    	<td><%= this_sub.kind %></td>
+			<td><%= link_to "Remove", :controller => "groups", :action => "rmsub", :id => @this_group.id , :sid => this_sub.id %></td>
+	  	</tr>
+		<% end %>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+	  	</tr>
+	<% end %>
+</table>
+
+
+<%= link_to 'Back', groups_path %>

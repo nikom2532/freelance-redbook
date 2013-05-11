@@ -1,0 +1,2 @@
+$("#project-list").html("<%= j render @projects %>");
+$("#paginate-project").html("<%= escape_javascript(paginate @projects, :param_name => 'project_page', :remote => true) %>");

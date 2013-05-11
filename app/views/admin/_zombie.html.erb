@@ -1,0 +1,8 @@
+<% @zombies.each do |zombie|%>
+	<tr>
+		<td> zombie </td>
+		<td><%= zombie.name %></td>
+		<td><%= zombie.email %></td>
+		<td><%= link_to "toUser", :controller => "admin", :action => "zombie2user", :id => zombie.id %></td>
+	</tr>
+<% end %>

@@ -1,0 +1,16 @@
+
+
+<div class="small-8 columns">
+    <div class="row panel radius">
+        <%= render partial: "list" %>
+    </div>
+</div>
+<div class="small-4 columns">
+    <div class="row panel radius" style="height: 700px;">
+        <div class="search">
+            <%= form_tag("#{request.protocol}#{request.host_with_port}#{request.fullpath}", :method => "get") do %>
+            <%= text_field_tag :q, nil, {placeholder: 'Search'} %>
+            <% end %>
+        </div>
+    </div>
+</div>

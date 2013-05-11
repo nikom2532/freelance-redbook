@@ -1,0 +1,25 @@
+<%= render 'header' %>
+
+<div class="small-8 columns panel radius">
+	
+	<div class="row">
+		<h4><%= :description %></h4>
+		<div class="twelve columns">
+			<%= @group.description.html_safe  %>
+		</div>
+	</div>
+
+</div>
+<div class="small-4 columns panel radius">
+</div>
+
+
+
+
+<% if current_user != nil and current_user.has_role? :moderator, @group or current_user.has_role? :admin%>
+	<%= link_to 'Edit', :controller => "groups", :action => "edit", :group_id => @group.id %>
+	
+<% end %>
+
+
+<%= link_to 'Back', groups_path %>

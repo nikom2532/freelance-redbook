@@ -1,0 +1,35 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th>subject</th>
+    <th>body</th>  
+    <th>sender</th>
+    <th>Labels</th>
+    <th>receiver</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.subject %></td>
+    <td><%= message.body %></td>
+    <td><%= message.sender.displayname %></td>
+    <td><%= message.get_label_list %></td>
+    <% if message.has_receiver? %>
+        <td><%= message.receiver.displayname%></td>
+    <% else %>
+        <td>None</td>
+    <% end %>
+    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Edit', edit_message_path(message) %></td>
+    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Message', new_message_path %>

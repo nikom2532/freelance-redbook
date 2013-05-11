@@ -1,0 +1,35 @@
+<h1>Listing Company groups</h1>
+
+<div class="search">
+  <%= form_tag("/companies", :method => "get") do %>
+  <%= text_field_tag :q, nil, {placeholder: 'Search Companies'} %>
+  <% end %>
+</div>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Kind</th>
+    <th>Research Domain</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @company_group.each do |group| %>
+  <tr>
+    <td><%= group.name %></td>
+    <td><%= group.kind %></td>
+    <td><%= group.research_domain %></td>
+    <td><%= link_to 'Show', :controller => "groups", :action => "about", :group_id => group.id %></td>
+    <td><%= link_to 'Edit', :controller => "groups", :action => "edit", :group_id => group.id %></td>
+    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Group', new_group_path %> |
+<%= link_to 'View Labs Group', :controller => "groups", :action => "labs" %> |
+<%= link_to 'View All Group', :controller => "groups", :action => "index" %>

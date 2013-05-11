@@ -1,0 +1,54 @@
+
+<div class="row listhead radius">
+    <div class="small-2 columns">
+        Logo
+    </div>
+    <div class="small-4 columns">
+        Name
+    </div>
+    <div class="small-2 columns">
+        <p class="deadline">
+            City
+        </p>
+    </div>
+    <div class="small-2 columns">
+        Country
+    </div>
+</div>
+
+<% @universities.each do |university| %>
+    <div class="row">
+        <div class="nopadding panel radius">
+            <div class="row">
+                <div class="small-2 columns">
+                    <%= link_to (image_tag university.logo.url), controller: "groups", action: "about", group_id: university.id  %>
+                </div>
+                <div class="small-4 columns">
+                    <%= link_to university.name, controller: "groups", action: "about", group_id: university.id  %>
+                </div>
+                <div class="small-2 columns">
+                    <p class="deadline">
+                        <%= university.city %>
+                    </p>
+                </div>
+                <div class="small-2 columns">
+                    <%= university.country %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-10 columns small-offset-2">
+                    <p>Description</p>
+                    <%= university.description %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="row ">
+    <div class="small-8 columns small-centered">
+        <div id="home-paginate">
+            <%= paginate @universities, :param_name => "university_page" %>
+        </div>
+    </div>
+  </div>

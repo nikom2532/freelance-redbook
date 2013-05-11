@@ -1,0 +1,158 @@
+<div class="row" id="bar-top1">
+	<div id="bar-left-right">&nbsp;</div>
+	<div>
+		<ul class="right">
+            <% unless user_signed_in? %>
+                <li class="divider show-for-medium-and-up"></li>
+                <li>
+                    <a data-reveal-id="LoginModal"
+                    	
+                    >Sign in</a>
+                </li>
+                <li class="divider show-for-medium-and-up"></li>
+                <li>
+                    <a data-reveal-id="InviteModal"
+                    	
+                    >Sign up</a>
+                </li>
+            <% else %>
+                <!-- <li class="has-dropdown"> -->
+                <ul >
+                    <li><%= link_to "Profile", user_path(current_user) %></li>
+                    <li><%= link_to 'Edit', edit_user_registration_path %></li>
+                    <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+                    <!-- <li class="divider"></li> -->
+                    <!-- <li><a href="#">See all &rarr;</a></li> -->
+                </ul>
+                <!-- </li> -->
+            <% end %>
+        </ul>
+	</div>
+</div>
+<div class="row" id="bar-top2">
+	<div id="bar-left-right">&nbsp;</div>
+    <nav class="top-bar">
+        <ul class="title-area">
+            <li class="name">
+                <h1><%= link_to "Redbook", root_path, :class => 'brand' %></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="left">
+                
+            </ul>
+            <ul class="right">
+            	<% unless user_signed_in? %>
+                    <li class="divider"></li>
+                    <li class="active"><%= link_to "WhatIs", what_path %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "LIP", lip_path %></li>
+                    <li class="divider"></li>
+                <% else %>
+					<!--
+                     <li class="has-form">
+                        <form>
+                            <div class="row collapse">
+                                <div class="small-8 columns">
+                                    <input type="text" placeholder="Search">
+                                </div>
+                            </div>
+                        </form>
+                    </li> -->
+                <% end %>
+                <!-- < % = begin comments -->
+                <% unless user_signed_in? %>
+
+                <% else %>
+                    <li class="divider"></li>
+                    <li><%= link_to "Project", projects_path %></li>
+                    <li class="divider"></li>
+                    <li class="active"><%= link_to "API", api_path %></li>
+                    <li class="divider"></li>
+					<!--
+	                <li class="has-dropdown">
+                        <a href="#">Account</a>
+                        <ul class="dropdown">
+                            <li><label><%= current_user.title.titleize %></label></li>
+                            <li><%= link_to 'Edit', edit_user_registration_path %></li>
+                            <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+                            <li class="divider"></li>
+                            <li><a href="#">See all &rarr;</a></li>
+                        </ul>
+                    </li> -->
+                <% end %>
+                <!-- = end comments % > -->
+            </ul>
+        </section>
+    </nav>
+</div>
+<% unless user_signed_in?%>
+<div id="LoginModal" class="reveal-modal [expand, xlarge, large, medium, small]appl small">
+    
+    <h2>Sign in</h2>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div>
+            <%= f.label :login %><br />
+            <%= f.text_field :login, :autofocus => true %>
+        </div>
+        <div>
+            <%= f.label :password %><br />
+            <%= f.password_field :password %></div>
+
+            <% if devise_mapping.rememberable? -%>
+                <div>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                </div>
+            <% end -%>
+
+            <div>
+                <%= f.submit "Sign in" %>
+            </div>
+        </div>
+    <% end %>
+
+</div>
+
+<div id="InviteModal" class="reveal-modal [expand, xlarge, large, medium, small]appl small">
+    <h3 style="text-align:center;">Request Invitation</h3>
+    <% @newinvitation = Invitation.new %>
+    <%= form_for(@newinvitation, remote: true) do |f| %>
+        <% if @newinvitation.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+                <ul>
+                    <% @newinvitation.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+            <%= f.label :fullname %><br />
+            <%= f.text_field :fullname %>
+        </div>
+        <div class="field">
+            <%= f.label :email %><br />
+            <%= f.text_field :email %>
+        </div>
+        <div class="field">
+            <%= f.label :institution %><br />
+            <%= f.text_field :institution %>
+        </div>
+
+        <div class="actions">
+            <input name="commit"  type="submit" value="Submit" class="secondary button" onclick="alert('Thank you for your interest, We will get back at you as soon as we can.');">
+            <a href="#"onclick="$('#thank_modal').foundation('reveal', 'open');">asdasd</a>
+        </div>
+    <% end %>
+</div>
+<%end%>
+<div id="thank_modal" class="reveal-modal [expand, xlarge, large, medium, small]appl">
+    <h3 style="text-align:center;">Thank you for your interest</h3>
+  
+</div>
+
+

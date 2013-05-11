@@ -1,0 +1,9 @@
+<div class="small-12 columns">
+    <div class="row panel radius">
+        <h3>User</h3>
+        <p>Name: <%= @user.displayname %></p>
+        <p>Position: <%= @user.positions[0].title if @user.has_positions? %></p>
+        <p>At: <%= @user.positions[0].institute.name if @user.has_positions? %>, <%= @user.positions[0].university.name if @user.has_positions? %></p>
+        <p>Email: <%= @user.email if @user.email %></p>
+    </div>
+</div>

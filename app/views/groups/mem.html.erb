@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <h3>Add Member</h3>
+  <b>Name:</b><%= @this_group.name %>
+</p>
+
+<p>
+  <b>Member:</b>
+  <%= @group.users.size %>
+</p>
+<b>Member List</b>
+<table>
+	<tr>
+	    <th>Name</th>
+	    <th>Email</th>
+	</tr>
+	<% if @group.users.size > 0 %>
+		<% @group.users.each do |mem| %>
+	  		<tr>
+		    	<td><%= mem.displayname %></td>
+				<td><%= mem.email %></td>
+				<td><%= link_to "Remove", :controller => "groups", :action => "rmuser", :id => @group.id , :uid => mem.id %></td>
+		  	</tr>
+		<% end %>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+	  	</tr>
+	<% end %>
+</table>
+<br />
+<b>All user List</b>
+<table>
+	<tr>
+	    <th>Name</th>
+	    <th>Email</th>
+	</tr>
+	<% if @user.size > 0 %>
+		<% @user.each do |mem| %>
+	  		<tr>
+		    	<td><%= mem.displayname %></td>
+				<td><%= mem.email %></td>
+				<td><%= link_to "Add", :controller => "groups", :action => "adduser", :id => @group.id , :uid => mem.id %></td>
+		  	</tr>
+		<% end %>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+	  	</tr>
+	<% end %>
+</table>
+<br />
+<%= link_to 'Back', groups_path %>

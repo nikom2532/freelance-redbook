@@ -1,0 +1,63 @@
+<p>
+  <b>Parent Group:</b>
+  <% if @group.parentgroups != nil %>
+  	<%= @group.parentgroups.name %>
+  <% else %>
+	No Parent Group
+  <% end %>
+</p>
+<b>Parent Group List</b>
+<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Kind</th>
+	    <th></th>
+	  </tr>
+	<% if @group.parentgroups != nil %>
+		<% par = @group.parentgroups %>
+	  		<tr>
+		    	<td><%= par.name %></td>
+		    	<td><%= par.kind %></td>
+				<td><%= link_to "Remove", :controller => "groups", :action => "rmpar", :id => @group.id , :pid => par.id %></td>
+		  	</tr>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+			<td></td>
+			<td></td>
+	  	</tr>
+	<% end %>
+</table>
+<%= link_to 'Add Parentgroups', :controller => "groups", :action => "parent", :id => @group.id %>
+<br />
+<br />
+
+<p>
+  <b>Sub Group:</b>
+  <%= @group.subgroups.size %>
+</p>
+<b>Sub Group List</b>
+<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Kind</th>
+	    <th></th>
+	  </tr>
+	<% if @group.subgroups.size > 0 %>
+		<% @group.subgroups.each do |sub| %>
+	  		<tr>
+		    	<td><%= sub.name %></td>
+		    	<td><%= sub.kind %></td>
+				<td><%= link_to "Remove", :controller => "groups", :action => "rmsub", :id => @group.id , :sid => sub.id %></td>
+		  	</tr>
+		<% end %>
+	<% else %>
+		<tr>
+	    	<td>Empty List</td>
+			<td></td>
+			<td></td>
+	  	</tr>
+	<% end %>
+</table>
+
+<%= link_to "Add Subgroups", :controller => "groups", :action => "sub", :id => @group.id %>

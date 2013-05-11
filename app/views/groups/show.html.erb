@@ -1,0 +1,35 @@
+<%= render 'header' %>
+<div class="row">
+	<div class="eight columns">
+		<div class="row">
+			
+		</div>
+		<div id="logo_name" class="row">
+			<div class="two columns">
+				<%= image_tag @group.logo %>
+			</div>
+			<div class="ten columns">
+				<%= @group.name %>&nbsp<%= @group.kind %>
+			</div>
+		</div>
+		<div class="row">
+			<%= @group.research_domain %>
+			<%= @group.description.html_safe  %>
+		</div>
+		<div id="member" class="row">
+			<% if @group.has_users? %>
+				<%= @group.users.name %>
+			<% end%>
+		</div>
+
+	</div>
+	<div class="four columns">
+	</div>
+</div>
+<%= render 'header' %>
+
+
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

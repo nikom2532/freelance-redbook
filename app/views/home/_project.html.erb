@@ -1,0 +1,54 @@
+
+<div class="row listhead radius">
+    <div class="small-2 columns">
+        &nbsp
+    </div>
+    <div class="small-4 columns">
+        Title
+    </div>
+    <div class="small-2 columns">
+        <p class="deadline">
+            Application Deadline
+        </p>
+    </div>
+    <div class="small-2 columns">
+        Budget
+    </div>
+</div>
+
+<% @projects.each do |project| %>
+    <div class="row">
+        <div class="nopadding panel radius">
+            <div class="row">
+                <div class="small-2 columns">
+                    <%= link_to (image_tag project.image.url), project %>
+                </div>
+                <div class="small-4 columns">
+                    <%= link_to project.name, project %>
+                </div>
+                <div class="small-2 columns">
+                    <p class="deadline">
+                        <%= project.deadline %>
+                    </p>
+                </div>
+                <div class="small-2 columns">
+                    <%= project.budget %>&#36;
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-10 columns small-offset-2">
+                    <p>Description</p>
+                    <%= project.description %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="row">
+    <div class="small-8 columns small-centered">
+        <div id="home-paginate">
+            <%= paginate @projects, :param_name => "project_page" %>
+        </div>
+    </div>
+</div>

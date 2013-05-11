@@ -1,0 +1,32 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :receiver, :autocomplete => messages_autocomplete_user_firstname_path %>
+
+  </div>
+  
+
+  <div class="field">
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.text_field :body %>
+  </div>
+  <div class="field">
+    <%= f.text_field :label_list, :input_html => { :data => { :labels => Label.get_label_list.to_json } } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

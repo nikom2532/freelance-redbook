@@ -1,0 +1,196 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= image_tag @group.logo.url%>
+    </div>
+    <div class="small-9 columns">
+      <%= f.file_field :logo %>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= image_tag @group.cover.url%>
+    </div>
+    <div class="small-9 columns">
+      <%= f.file_field :cover %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :name %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :name, required: true %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :description %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_area :description, style: "height: 200px;" , :accept => 'text/html', required: true%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :kind %>
+    </div>
+    <div class="small-9 columns">
+      <% @kind_category = {"Institute" => "Institute","University" => "University", "Company" => "Company"} %>
+      <%= select_tag(:kind, options_for_select(@kind_category,:selected => @group.kind),{:id => "kind",:name => "group[kind]"}) %>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :research_domain %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :rdomain_list, :input_html => {  }  %>
+      <!-- :data => { :rdomains => Rdomain.get_rdomain_list.to_json }  -->
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :address %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :address%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :city %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :city%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :state %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :state%>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :country %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :country%>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :postal_code %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :postal_code%>
+    </div> 
+  </div>
+
+  <div class="row ">
+    <div class="small-3 columns">
+      <%= f.label :Phone %>
+    </div>
+    <div class="small-9 columns">
+      <div class="small-2 columns">
+        <%= f.text_field :phone_country %>
+      </div>
+      <div class="small-7 columns">
+        <%= f.text_field :phone %>
+      </div>
+      <div class="small-3 columns">
+        <%= f.text_field :phone_extension %>
+      </div>
+            
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :email %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.email_field :email%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :website %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :website%>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :facebook %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :facebook%>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :twitter %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :twitter%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :verify_host %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :verify_host%>
+    </div> 
+  </div>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :moderator %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :group_moderator%>
+    </div> 
+  </div>
+  
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<br />
+
+<br />

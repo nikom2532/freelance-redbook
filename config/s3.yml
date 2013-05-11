@@ -1,0 +1,12 @@
+development:
+  bucket: redbook-dev
+  access_key_id: AKIAI5NYCM5W7KMN62WQ
+  secret_access_key: 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
+test:
+  bucket: redbook-test
+  access_key_id: AKIAI5NYCM5W7KMN62WQ
+  secret_access_key: 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
+production:
+  bucket: redbook-pro
+  access_key_id: AKIAI5NYCM5W7KMN62WQ
+  secret_access_key: 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

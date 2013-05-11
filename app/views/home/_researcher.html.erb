@@ -1,0 +1,49 @@
+
+<div class="row listhead radius">
+    <div class="small-2 columns">
+        Avatar
+    </div>
+    <div class="small-4 columns">
+        Name
+    </div>
+    <div class="small-2 columns">
+        <p class="deadline">
+            Research Domains
+        </p>
+    </div>
+    <div class="small-2 columns">
+        Website
+    </div>
+</div>
+
+<% @users.each do |user| %>
+    <div class="row">
+        <div class="nopadding panel radius">
+            <div class="row">
+                <div class="small-2 columns">
+                    <%= link_to (image_tag user.avatar.url), user  %>
+                </div>
+                <div class="small-4 columns">
+                    <%= link_to user.displayname, user %>
+                </div>
+                <div class="small-2 columns">
+                    <p class="deadline">
+                        <%= user.rdomain_list %>
+                    </p>
+                </div>
+                <div class="small-2 columns">
+                    <%= user.website %>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+<% end %>
+
+<div class="row">
+    <div class="small-8 columns small-centered">
+        <div id="home-paginate">
+            <%= paginate @users, :param_name => "user_page" %>
+        </div>
+    </div>
+  </div>

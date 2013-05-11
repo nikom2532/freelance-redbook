@@ -1,0 +1,14 @@
+<%= render 'header' %>
+<div class="row ">
+	<div class="eight columns panel radius">
+		<%= render 'users/list', :users => @users %>
+
+
+	</div>
+	<div class="four columns panel radius">
+	</div>
+</div>
+
+<% if current_user != nil and current_user.has_role? :moderator, @group %>
+	<%= link_to "Manage member", :controller => "groups", :action => "memberships", :group_id => @group.id %>
+<% end %>

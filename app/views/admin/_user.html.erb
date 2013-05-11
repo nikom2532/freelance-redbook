@@ -1,0 +1,8 @@
+<% @users.each do |user|%>
+	<tr>
+		<td><%= :user %></td>
+		<td><%= user.name %></td>
+		<td><%= user.email %></td>
+		<td><%= link_to "toZombie", :controller => "admin", :action => "user2zombie", :id => user.id %></td>
+	</tr>
+<% end %>

@@ -1,0 +1,21 @@
+</p>
+	<h5>Add User to Moderator</h5>
+	<table>
+		<thead>
+			<th>status</th>
+			<th>name</th>
+			<th>email</th>
+			<th>promote</th>
+		</thead>
+		<tbody>
+			<% User.each do |user| %>
+				<tr>
+					<td><%= user.title.titleize %></td>
+					<td><%= user.displayname %></td>
+					<td><%= user.email %></td>
+					<td><%= link_to "toModerator",:controller => "groups", :action => "user2mod", :id => @group.id , :user_id => user.id %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<p>

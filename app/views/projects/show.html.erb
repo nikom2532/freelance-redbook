@@ -1,0 +1,27 @@
+<div class="small-12 columns">
+    <div class="row panel radius">
+        
+        <%= image_tag @project.image.url %>
+        <br/>
+        <%= @project.name %>
+        <br/>
+        <%= @project.description %>
+        <br/>
+        <%= @project.rdomain_list %>
+        <br/>
+        <%= @project.deadline %>
+        <br/>
+        <%= @project.budget %>
+        <br/>
+        <%= @project.country %>
+        <br/>
+        <%= @project.region %>
+        <br/>
+        <%= @project.continent %>
+        <br/>
+
+        <%= link_to 'Edit', edit_project_path(@project) %> |
+        <%= link_to 'Back', projects_path %>
+
+    </div>
+</div>

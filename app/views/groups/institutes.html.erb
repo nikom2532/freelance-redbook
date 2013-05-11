@@ -1,0 +1,29 @@
+<h1>Listing Institutes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Kind</th>
+    <th>Research Domain</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= group.name %></td>
+    <td><%= group.kind %></td>
+    <td><%= group.rdomain_list %></td>
+    <td><%= link_to 'Show', :controller => "groups", :action => "about", :group_id => group.id %></td>
+    <td><%= link_to 'Edit', :controller => "groups", :action => "edit", :group_id => group.id %></td>
+    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Group', new_group_path %> |
+<%= link_to 'View Labs Group', :controller => "groups", :action => "labs" %> |
+<%= link_to 'View Company Group', :controller => "groups", :action => "companies" %>

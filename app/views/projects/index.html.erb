@@ -1,0 +1,41 @@
+<div class="small-8 columns">
+    <div class="row panel radius">
+        
+        <div class="row listhead radius">
+            <div class="small-2 columns">
+                
+            </div>
+            <div class="small-4 columns">
+                Title
+            </div>
+            <div class="small-2 columns">
+                <p class="deadline">
+                    Application Deadline
+                </p>
+            </div>
+            <div class="small-2 columns">
+                Budget
+            </div>
+        </div>
+        <div id="project-list" >
+            <%= render @projects %>
+        </div>
+        <div class="row ">
+
+            <div class="small-8 columns small-centered" id="paginate-project">
+                <%= paginate @projects, :param_name => "project_page", :remote => true%>
+            </div>
+
+          </div>
+    </div>
+</div>
+<div class="small-4 columns">
+    <div class="row panel radius" style="height: 700px;">
+        <div class="search">
+            <%= form_tag("/projects", :method => "get") do %>
+            <%= text_field_tag :q, nil, {placeholder: 'Search'} %>
+            <% end %>
+        </div>
+        <h4>Filter</h4>
+    </div>
+</div>
